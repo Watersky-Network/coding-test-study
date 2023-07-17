@@ -1,7 +1,5 @@
 # 내 풀이
 ```kotlin
-import kotlin.math.*
-
 class Solution {
     var maxValue: Int = 0
     var maxValueColumn: Int = 0
@@ -39,17 +37,17 @@ class Solution {
             val son1: Int = mom[0]
             val son2: Int = mom[1]
             if (son1 > son2) {
-                val tempMaxValue = max(maxValue, son1)
+                val tempMaxValue = maxOf(maxValue, son1)
                 if (maxValue != tempMaxValue) {
                     maxValueColumn = 0
-                    maxValue = max(maxValue, son1)
+                    maxValue = maxOf(maxValue, son1)
                 }
 
             } else {
-                val tempMaxValue = max(maxValue, son2)
+                val tempMaxValue = maxOf(maxValue, son2)
                 if (maxValue != tempMaxValue) {
                     maxValueColumn = 1
-                    maxValue = max(maxValue, son2)
+                    maxValue = maxOf(maxValue, son2)
                 }
             }
             
@@ -72,7 +70,7 @@ class Solution {
         var maxValue: Int = 0
         for (mom in input) {
             val maxValueOtherColumn: Int = mom[otherColumn]
-            maxValue = max(maxValue, maxValueOtherColumn)
+            maxValue = maxOf(maxValue, maxValueOtherColumn)
         }
         return maxValue
     }
