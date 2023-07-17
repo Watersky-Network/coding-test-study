@@ -76,3 +76,20 @@ class Solution {
     }
 }
 ```
+
+# 다른 사람 풀이
+```kotlin
+class Solution {
+    fun solution(sizes: Array<IntArray>): Int {
+        val widths = mutableListOf<Int>()
+        val heights = mutableListOf<Int>()
+
+        sizes.forEach {
+            widths.add(maxOf(it[0], it[1]))
+            heights.add(minOf(it[0], it[1]))
+        }
+        
+        return widths.maxOf{it} * heights.maxOf{it}
+    }
+}
+```
