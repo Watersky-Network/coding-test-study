@@ -1,3 +1,6 @@
+# 정리
+[my tistory](https://chivalrous-hyeop.tistory.com/5)
+
 # 내 풀이
 ```kotlin
 class Solution {
