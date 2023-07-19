@@ -18,7 +18,7 @@ class Solution {
                 if (dat[it[idx]] == null) {
                     dat[it[idx]] = idx+1
                 } else {
-                    getMinvalue(it[idx], idx+1) // method 구현
+                    getMinValue(it[idx], idx+1) // method 구현
                 }
             }
         }
@@ -40,7 +40,7 @@ class Solution {
     }
     
     // 최소 값 설정
-    fun getMinvalue(char: Char, increasedIndex: Int) {
+    fun getMinValue(char: Char, increasedIndex: Int) {
         dat[char]?.let {
             println("key: $char, value: $it, now index: $increasedIndex")
             if (it > increasedIndex) {
