@@ -1,3 +1,6 @@
+# 정리
+[my tistory](https://chivalrous-hyeop.tistory.com/8)
+
 # 내 풀이
 ```kotlin
 class Solution {
@@ -6,10 +9,10 @@ class Solution {
     fun solution(keymap: Array<String>, targets: Array<String>): IntArray {
         var answer: IntArray = intArrayOf()
         /**
-         * 1. keymap 값의 Char에 대해서 DAT 생성 (method 구현 : value = index 최소 값)
-         * 2. targets 값에 대해 for loop를 돌며, DAT key에 해당하는 value 값을 찾아
+         * 1. keymap list의 문자열의 Char에 대 DAT 생성 (method 구현 : value = index 최소 값)
+         * 2. targets list의 문자열에 대해 for loop를 돌며, DAT[key]에 해당하는 값을 찾아
               최소 버튼 클릭 수 값을 저장하는 변수에 해당 값을 더한다.
-         * 3. 최소 버튼 클릭 수 값을 저장하는 변수를 intArray에 더한다.
+         * 3. 최소 버튼 클릭 수 값을 저장하는 변수를 IntArray에 더한다.
          * 번외) DAT에 값이 없으면 최소 버튼 클릭 수 값을 저장하는 변수 값은 -1이다.
          */
         keymap.forEach {
@@ -22,7 +25,7 @@ class Solution {
                 }
             }
         }
-        var result: Int = 0
+        var result: Int = 0 // 최소 버튼 클릭 수 값을 저장하는 변수
         targets.forEach {
             for (char in it) {
                 if (dat[char] == null) {
@@ -33,7 +36,7 @@ class Solution {
                 }
             }
             answer += result
-            result = 0
+            result = 0 // 초기화
         }
         
         return answer
