@@ -12,8 +12,6 @@ class Solution {
          * 3. 최소 버튼 클릭 수 값을 저장하는 변수를 intArray에 더한다.
          * 번외) DAT에 값이 없으면 최소 버튼 클릭 수 값을 저장하는 변수 값은 -1이다.
          */
-        val numbers: Int = keymap.size
-        
         keymap.forEach {
             println("keymap: $it")
             for (idx in 0 until it.length) {
