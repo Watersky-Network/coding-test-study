@@ -1,5 +1,5 @@
 # 정리
-[my tistory](https://chivalrous-hyeop.tistory.com/8)
+###[[tistory]](https://chivalrous-hyeop.tistory.com/8)
 
 # 내 풀이
 ```kotlin
