@@ -55,7 +55,7 @@ class Solution {
 }
 ```
 
-### 다른 사람 풀이
+# 다른 사람 풀이
 ```kotlin
 class Solution {
     fun solution(keymap: Array<String>, targets: Array<String>): IntArray {
