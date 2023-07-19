@@ -54,3 +54,39 @@ class Solution {
     }
 }
 ```
+
+### 다른 사람 풀이
+```kotlin
+class Solution {
+    fun solution(keymap: Array<String>, targets: Array<String>): IntArray {
+        var answer: IntArray = intArrayOf()
+        val dat: MutableMap<Char, Int> = mutableMapOf()
+        
+        for(str in keymap) {
+            for ((idx, key) in str.withIndex()) {
+                if ((dat[key] ?: idx) >= idx) {
+                    dat[key] = idx
+                } 
+            }
+        }
+        
+        for (target in targets) {
+            var result = 0
+            
+            for (char in target) {
+                val temp = dat[char]
+                if (temp == null) {
+                    result = -1
+                    break
+                } else {
+                    result += temp + 1
+                }
+            }
+            answer += result
+        }
+        
+        
+        return answer
+    }
+}
+```
