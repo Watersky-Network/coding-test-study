@@ -1,3 +1,6 @@
+# 정리
+[[my tistory]](https://chivalrous-hyeop.tistory.com/9)
+
 # 내 풀이
 ```kotlin
 import java.util.*
