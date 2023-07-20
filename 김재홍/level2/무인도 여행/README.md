@@ -35,8 +35,8 @@ class Solution {
          println("check: $check")
          
          val queue: Queue<Node> = LinkedList() // 좌표를 담는 queue
-         for (x in 0 until map.size) { //4
-             for (y in 0 until map[0].size) { // 5
+         for (x in 0 until map.size) {
+             for (y in 0 until map[0].size) {
                  if (map[x][y] != "X" && check[x][y] == 0) {
                      queue.add(Node(x, y))
                      check[x][y] = 1
