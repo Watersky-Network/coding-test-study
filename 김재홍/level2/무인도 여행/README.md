@@ -1,6 +1,66 @@
 # 정리
 [[my tistory]](https://chivalrous-hyeop.tistory.com/9)
 
+# 풀이 수정
+```kotlin
+import java.util.*
+
+class Solution {
+    lateinit var visited: Array<BooleanArray>
+    val dx = intArrayOf(0, 0, -1, 1)
+    val dy = intArrayOf(1, -1, 0, 0)
+    data class Node(
+        val row: Int,
+        val col: Int,
+    )
+    var onlyX: Boolean = true
+    
+    fun solution(maps: Array<String>): IntArray {
+        var answer: IntArray = intArrayOf()
+        /**
+         * 1. visited, dx, dy 배열 & Node class & 조기 종료 판단 변수 생성
+         * 2. bfs
+         * 3. 조기 종료 판단 변수 확인 및 조치
+         */
+        visited = Array(maps.size) { BooleanArray(maps[0].length) }
+        
+        maps.forEachIndexed {row, string ->
+            string.forEachIndexed {col, char ->
+                if (char != 'X' && !visited[row][col]) {
+                    onlyX = false // 조기 종료 판단 변수 변경
+                    // bfs
+                    val queue: Queue<Node> = LinkedList()
+                    queue.add(Node(row, col))
+                    var record: Int = 0 // answer에 저장할 record 초기화
+                    
+                    while (queue.isNotEmpty()) {
+                        val currentNode = queue.poll()
+                        visited[currentNode.row][currentNode.col] = true
+                        record += maps[currentNode.row][currentNode.col].toString().toInt()
+                        for (i in 0..3) {
+                            val newRow = currentNode.row + dx[i]
+                            val newCol = currentNode.col + dy[i]
+                            if (newRow >= 0 && newRow < maps.size && newCol >= 0 && newCol < maps[0].length) {
+                                if (maps[newRow][newCol] != 'X' && !visited[newRow][newCol]) {
+                                    visited[newRow][newCol] = true
+                                    queue.add(Node(newRow, newCol))
+                                }
+                            }
+                        }
+                    }
+                    answer += record
+                } 
+            }
+        }
+        
+        if (onlyX) return intArrayOf(-1) // 조기 종료 판단
+        
+        return answer.sorted().toIntArray()
+    }
+    
+}
+```
+
 # 내 풀이
 ```kotlin
 import java.util.*
