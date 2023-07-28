@@ -1,3 +1,18 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/150370
+
+/* 
+* 테스트 17 case 다음의 예외에서 걸렸었다. 월이 12의 배수이면
+* 입력값 〉 "2020.12.17", ["A 12"], ["2010.01.01 A", "2019.12.17 A"]
+* 기댓값 〉 [1, 2]
+* 
+* 날짜 형식 객체 다 필요없다.
+* 그냥 일자로 다 바꿔서 비교하는 게 코드도 짧고 시간도 덜 걸리고
+* 예외 날 경우도 별로 없다.
+*
+* https://school.programmers.co.kr/questions/51273
+* https://cheonjoosung.github.io/blog/pg-privacy
+*/
+
 // 1. terms 유효기간은 달이다. 이를 pribacy 월에 더하고 12 초과(13)이면 년을 1 더한다. 일은 -1 한다.
 // 2. 모든 달은 28일 이 마지막날이다.
 // 3. 오늘이 유효기간 마지막 날이면 보존한다.
@@ -87,10 +102,6 @@ void parsePrivacies(vector<string> pri) {
     }
 }
 
-// 존재하는 약관은 나오지않는다.
-// 달과 월은 두자리로만 나타난다. 한자리일 경우 05.02 등.
-// 파기할 privacy는 반드시 1개 이상이다.
-
 void getExpired() {
     for (int i = 0; i < privacies_sz; i++) {
         Date agreed = privacies[i].date;
@@ -103,12 +114,20 @@ void getExpired() {
 
         // 12 초과(13)이면 년을 1 더한다. 유효기간은 100달 까지 가능함.
         if (expire.month > 12) {
-            expire.year += expire.month / 12;
-            expire.month = expire.month % 12;
+            // 12의 배수일 때, 테스트 케이스 걸림. 월이 12의 배수이면 한해 더 많이 더해지고 0월이 되어벼렸다.
+            if (expire.month % 12 == 0) {
+                expire.year += (expire.month / 12 - 1);
+                expire.month = 12;
+            }
+            else {
+                expire.year += expire.month / 12;
+                expire.month = expire.month % 12;
+            }
         }
         // 3. 오늘이 유효기간 마지막 날이면 보존한다. = 오늘이 유효기간 보다 크면 expire
         // 방금, day는 유지했기 때문에 오늘이 유효기간 보다 이상(유효기간과 같음 포함)이면 expire
         if (today >= expire) {
+            // cout << expire.year << ' ' << expire.month<< ' ' << expire.day << endl;
             expired.push_back(i + 1);
         }
     }
