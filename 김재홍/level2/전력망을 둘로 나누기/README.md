@@ -22,8 +22,8 @@ class Solution {
         }
         
         wires.forEach {
-            val one = countEdge(connection, it[0] - 1, it[1] - 1)
-            val theOther = countEdge(connection, it[1] - 1, it[0] - 1)
+            val one = countMovement(connection, it[0] - 1, it[1] - 1)
+            val theOther = countMovement(connection, it[1] - 1, it[0] - 1)
             var record = one - theOther
             if (record < 0) record *= -1
             if (answer > record) answer = record
@@ -32,7 +32,7 @@ class Solution {
         return answer
     }
     
-    fun countEdge(connection: Array<MutableList<Int>>, start: Int, end: Int): Int {
+    fun countMovement(connection: Array<MutableList<Int>>, start: Int, end: Int): Int {
         val visited = HashSet<Int>()
         val queue: Queue<Int> = LinkedList()
 
